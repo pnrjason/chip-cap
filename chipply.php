@@ -19,7 +19,7 @@
                 'user-agent: Mozilla/5.0 (Windows NT '.rand(11,99).'.0; Win64; x64) AppleWebKit/'.rand(111,999).'.'.rand(11,99).' (KHTML, like Gecko) Chrome/'.rand(11,99).'.0.'.rand(1111,9999).'.'.rand(111,999).' Safari/'.rand(111,999).'.'.rand(11,99)
             )
         ));
-        $rtk = GetStr(curl_exec($ch), 'type="hidden" id="recaptcha-token" value="', '"');
+        $rtk = g(curl_exec($ch), 'type="hidden" id="recaptcha-token" value="', '"');
         curl_close($ch);
 
         $ch = curl_init();
@@ -34,7 +34,7 @@
             ),
             CURLOPT_POSTFIELDS => "v=$v&reason=q&c=$rtk&k=$k&co=$co&hl=en&size=invisible&chr=$chr&vh=$vh&bg=$bg"
         ));
-        $captcha = GetStr(curl_exec($ch), '"rresp","', '"');
+        $captcha = g(curl_exec($ch), '"rresp","', '"');
         curl_close($ch);
 
         return $captcha;
