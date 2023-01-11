@@ -21,6 +21,7 @@
         ));
         $rtk = g(curl_exec($ch), 'type="hidden" id="recaptcha-token" value="', '"');
         curl_close($ch);
+        
         $ch = curl_init();
         curl_setopt_array($ch, array(
             CURLOPT_URL => "https://www.google.com/recaptcha/enterprise/reload?k=6Leg_UwbAAAAAEZl-3uNpoDIXlax5mEHA79O_-0Z",
